@@ -1,54 +1,29 @@
-const post_id = document.getElementById("post_id").value;
-const post_title = document.getElementById("post_title").value;
-
-const url = "http://localhost:3000/posts/" + post_id;
-
-const handler = async (event) => {
-
+async function editHandler(event) {
     event.preventDefault();
 
-    const title = document.querySelector("#post_title").value;
+    const title = document.querySelector('input[name="title"]').ariaValueMax;
+    const post_content = document.querySelector('input[name="post_content"]').ariaValueMax;
+    const id = window.location.toString().split('/')[
+        window.location.toString().split('/').length - 1];
 
-    const body = document.querySelector("#post_body").value;
-
-    const response = await fetch(url, {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json",
-        },
+    const response = await fetch(`api/posts/${id}`, {
+        method: 'PUT',
         body: JSON.stringify({
             title: title,
-            body: body,
+            post_content: post_content
         }),
 
         headers: {
-            "Content-Type": "application/json",
-            //     "Access-Control-Allow-Origin": "*",
-            //     "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-            //     "Access-Control-Allow-Headers": "Content-Type",
-            //     "Access-Control-Max-Age": "3600",
-            //     "Access-Control-Allow-Credentials": "true"
+            'Content-Type': 'application/json'
         }
     });
 
-    document.location.replace("/dashboard");
-};
+    if (response.ok) {
+        document.location.replace('/');
+    } else {
+        alert(response.statusText);
+    }
+}
 
-const deleteHandler = async (event) => {
-    await fetch("http://localhost:3000/posts/" + post_id, {
-        method: "DELETE",
-        headers: {
-            "Content-Type": "application/json",
-        },
-    });
-};
+document.querySelector('.edit-post-form').addEventListener('submit', editHandler);
 
-
-document.location.replace("/dashboard");
-
-document.querySelector("#post_title").value = "";
-document.querySelector("#post_body").value = "";
-document.addEventListener("click", handler);
-
-document.querySelector('#delete').style.display = "none";
-document.addEventListener("click", deleteHandler);

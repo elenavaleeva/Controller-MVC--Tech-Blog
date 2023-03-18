@@ -1,0 +1,26 @@
+<a href="/homepage" class="is-pulled-right">Return to Home</a>
+
+<p>Post ID: {{post.id}}</p>
+<h3>{{post.title}}</h3>
+<p>{{post.description}}</p>
+<p>Username: {{post.User.username}}</p>
+
+{{#if logged in}}
+<form action="" class="comment-form">
+    <div>
+        <input type="text" class="comment-text" value="{{post.id}}" />
+        <textarea class="ml-3" id="comment-body"></textarea>
+    </div>
+    <div>
+        <button class="button is-warning ml-10 mb-12" type="submit"></button>
+    </div>
+
+
+</form>
+
+{{/if}}
+{{ comment-post comment=post.Comments}}
+
+{{if logged in}}
+<script src="./js/comment.js"></script>
+{{/if}}
