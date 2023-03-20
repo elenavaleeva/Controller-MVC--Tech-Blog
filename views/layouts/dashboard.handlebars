@@ -7,28 +7,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/" />
     <link rel="stylesheet" type="text/css" href="https://maxcdn.boot " />
+    <script src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <title>TechBlog</title>
 </head>
 
 <body>
-    <div class="flex-column justify-space-around ">
-        <header class="display-flex align-center justify-space-between p-2">
-            <p> Tech Blog </p>
-            <nav>
-                <a href="/dashboard">Dashboard</a>
-                <a href="/posts"> Posts</a>
-                <a href="/logout" id="logout">Logout</a>
-            </nav>
-        </header>
-        <main class="container container-fluid mt-5">
 
+    <header>
+        <h1 class="has-text-black px-3 has-text-weight-bold">TechBlog</h1>
+        <h3>Sharing</h3>
+        <nav>
+            {{#if logged in}}
+            <nav>
+                <a href="/homepage" class="navbar-item is-hoverable pt-1" class="fa fa-home">Home</a>
+                <a href="/post" class="navbar-item is-hoverable pt-1"><i class="fas fa-comments"></i>New Post</a>
+                <button id="logout" class="button is danger" class="fas fa sign-out-alt">Logout</button>
+            </nav>
+
+            {{else}}
+
+            <a href="/login" class="button is-primary"><i class="fas fa-sign-in-alt"></i>Login</a>
+
+    </header>
+    <main>
+        <div class="display">
             {{{body}}}
-        </main>
-        <footer>
-            <a href="/dashboard/new">New Post</a>
-        </footer>
-    </div>
+        </div>
+    </main>
+    {{#if loggedIn}}
     <script src="/public/js/logout.js"></script>
+
 </body>
 
 </html>
