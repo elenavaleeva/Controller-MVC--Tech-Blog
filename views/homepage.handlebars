@@ -1,11 +1,10 @@
-{{ each posts as |post| }}
-
-<div class="row" mb-4 post>
+{{#each posts as |post| }}
+<div class="row mb-4 post">
     <div class="col-md-2">
         <h2>
             <a href="/post/{{post.id}}"> {{post.title}}</a>
         </h2>
-        <p> Created bu {{user.username}} on {{post_date_created}}</p>
+        <p> Created by {{post.User.username}} on {{post.date_created}}</p>
     </div>
     <div class="col-md-7">
         <p>

@@ -1,27 +1,32 @@
 {
-    "name": "museum-paintings",
-    "version": "1.0.0",
-    "description": "",
-    "main": "server.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node server.js",
-        "seed": "node seeds/index.js"
-    },
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-        "bcrypt": "^5.0.0",
-        "connect-session-sequelize": "^7.0.4",
-        "console.table": "^0.10.0",
-        "dotenv": "^8.2.0",
-        "easyinvoice": "^3.0.2",
-        "express": "^4.18.2",
-        "express-handlebars": "^5.2.0",
-        "express-session": "^1.17.1",
-        "handlebars": "^4.7.6",
-        "inquirer": "^9.1.4",
-        "mysql2": "^2.3.3",
-        "sequelize": "^6.29.3"
-    }
+  "name": "controller-mvc--tech-blog",
+  "version": "1.0.0",
+  "description": "Writing about tech can be just as important as making it. Developers spend plenty of time creating new applications and debugging existing codebases, but most developers also spend at least some of their time reading and writing about technical concepts, recent advancements, and new technologies. A simple Google search for any concept covered in this course returns thousands of think pieces and tutorials from developers of all skill levels!",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elenavaleeva/Controller-MVC--Tech-Blog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/elenavaleeva/Controller-MVC--Tech-Blog/issues"
+  },
+  "homepage": "https://github.com/elenavaleeva/Controller-MVC--Tech-Blog#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2",
+    "express-handlebars": "^7.0.2",
+    "express-session": "^1.17.3",
+    "mysql2": "^3.2.0",
+    "sequelize": "^6.30.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
 }

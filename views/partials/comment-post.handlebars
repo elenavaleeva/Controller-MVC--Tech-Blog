@@ -1,8 +1,8 @@
 <div class="comment">
-    {{#each comment}}
+    {{#each comments}}
     <section class="comment">
         <div class="meta">
-            {{User.username}} on {{this.date_created}}
+            {{this.User.username}} on {{format this.date_created}}
 
         </div>
         <div class="text">

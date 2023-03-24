@@ -1,10 +1,11 @@
 const router = require('express').Router();
-const { Users } = require('../db/models');
+const { User } = require('../../models');
 const withAuth = require('../utils/auth');
+const sequelize = require('../../config/connection');
 
 router.post('/', async (req, res, next) => {
     try {
-        const dbUserData = await Users.create({
+        const dbUserData = await User.create({
 
             username: req.body.username,
             email: req.body.email,
@@ -27,7 +28,7 @@ router.post('/', async (req, res, next) => {
 
 router.post('/login', async (req, res, next) => {
     try {
-        const dbUserData = await Users.findOne({
+        const dbUserData = await User.findOne({
             where: {
                 email: req.body.email
             },

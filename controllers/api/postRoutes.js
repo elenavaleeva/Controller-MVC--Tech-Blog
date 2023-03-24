@@ -24,8 +24,7 @@ router.get('/', (req, res) => {
                 model: User,
                 attributes: ['username']
             }
-        }
-        ]
+        }]
     })
 
         .then(dbPostData => res.json(dbPostData.reverse()))
@@ -59,9 +58,7 @@ router.get('/:id', (req, res) => {
                 model: User,
                 attributes: ['username']
             }
-        }
-
-        ]
+        }]
     })
         .then(dbPostData => {
             if (!dbPostData) {
@@ -84,21 +81,14 @@ router.post('/', withAuth, (req, res) => {
         user_id: req.session.user_id,
         description: req.body.description,
 
-        include: [{
-            model: User,
-            attributes: ['username']
-        }]
     })
 
-        .then(dbPostData => {
-            res.json(dbPostData)
-
-        })
+        .then(dbPostData => res.json(dbPostData))
         .catch(err => {
-
             console.log(err);
             res.status(500).json(err);
         });
+
 });
 
 router.put('/:id', withAuth, (req, res) => {
@@ -113,9 +103,10 @@ router.put('/:id', withAuth, (req, res) => {
             where: {
                 id: req.params.id
             }
-
-        }).then(dbPostData => {
-            if (!dbPostData) {
+        }
+    )
+        .then(dbPostData => {
+            if (!dbPostData[0]) {
                 res.status(404).json({ message: 'No post found with this id' });
                 return;
             }
@@ -132,20 +123,19 @@ router.delete('/:id', withAuth, (req, res) => {
         where: {
             id: req.params.id
         }
-
-    }).then(dbPostData => {
-        if (!dbPostData) {
-            res.status(404).json({ message: 'No post found with this id' });
-            return;
-        }
-        res.json(dbPostData);
-    }).catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
+    })
+        .then(dbPostData => {
+            if (!dbPostData) {
+                res.status(404).json({ message: 'No post found with this id' });
+                return;
+            }
+            res.json(dbPostData);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json(err);
+        });
 });
 
 
-
-
-module.exports = router;
+module 
